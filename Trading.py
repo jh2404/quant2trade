@@ -39,12 +39,27 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         form_class.__init__(self)                            # 상속 받은 from_class를 실행하기 위한 초기값(초기화)
         self.setUI()                                         # UI 초기값 셋업 반드시 필요
 
-        ### 초기 셋팅
+        ############################ 초기 셋팅 ##############################
         self.label_11.setText(str("총매입금액"))
         self.label_12.setText(str("총평가금액"))
         self.label_13.setText(str("추정예탁자산"))
         self.label_14.setText(str("총평가손익금액"))
         self.label_15.setText(str("총수익률(%)"))
+
+        self.searchItemTextEdit2.setAlignment(Qt.AlignRight)
+        # 종목검색 창 우측정렬
+
+        self.buy_price.setAlignment(Qt.AlignRight) # 우측 정려
+        self.buy_price.setDecimals(0) # 소수점 제거 (1이면 xx.x)
+        self.n_o_stock.setAlignment(Qt.AlignRight)
+        self.n_o_stock.setDecimals(0)
+        self.profit_price.setAlignment(Qt.AlignRight)
+        self.profit_price.setDecimals(0)
+        self.loss_price.setAlignment(Qt.AlignRight)
+        self.loss_price.setDecimals(0)
+
+        ############################ ######### ##############################
+
 
         self.login_event_loop = QEventLoop()
 
@@ -147,20 +162,40 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
                 
         column_head = ["종목코드", "종목명", "현재가", "신용비율", "매수가", "매수수량", "익절가", "손절가"]
         colCount = len(column_head)
-        row_count = self.buylast.rowCount()
+        row_count = self.buylast.rowCount() # 실제 row개수를 반환
         
-        self.buylast.setColumnCount(colCount)  # 행 갯수
-        self.buylast.setRowCount(row_count+1)  # colum_haed가 한 행을 잡아 먹는다. 실제 입력 되는 값은 1행 부터이다.
+        #print("row_count: " + str(self.buylast.rowCount())) # m
+        
+        self.buylast.setColumnCount(colCount)  # 열 개수 지정.
+        self.buylast.setRowCount(row_count+1)  # 행 개수를 불러와 변수에 저장해두고 행의 크기를 한칸만큼 늘린다.(늘린다->행추가한다)
+
+        #print("row_count: " + str(self.buylast.rowCount())) # m+1
+        # 행 개수를 불러와 변수에 저장해두고 행의 크기를 한칸만큼 늘린다.(행추가 ->> searchItem이 사실상 리스트 추가의 기능이기 때문)
+        # colum_haed가 한 행을 잡아 먹는다. 실제 입력 되는 값은 1행 부터이다. 실제 row보다 하나 더 필요(colum_haed를 위해)
+        
+        #print("setHorizontalHeaderLabels 이전" + str(self.buylast.rowCount()))# setHorizontalHeaderLabels 이전 -> n
+        
         self.buylast.setHorizontalHeaderLabels(column_head)  # 행의 이름 삽입
         
-        self.buylast.setItem(row_count, 0, QTableWidgetItem(str(self.new_code))) # 실제 입력값은 1행부터이나 0부터 들어가야 된다.
-        self.buylast.setItem(row_count, 1, QTableWidgetItem(str(itemName)))
-        self.buylast.setItem(row_count, 4, QTableWidgetItem(str(self.buy_price.toPlainText())))
-        self.buylast.setItem(row_count, 5, QTableWidgetItem(str(self.n_o_stock.toPlainText())))
-        self.buylast.setItem(row_count, 6, QTableWidgetItem(str(self.profit_price.toPlainText())))
-        self.buylast.setItem(row_count, 7, QTableWidgetItem(str(self.loss_price.toPlainText())))
-        # row_count,[2:3]의 값은 trdata_slot에서 받은 값으로 입력해줌(row_count-1,[2,3])
+        #print("setHorizontalHeaderLabels 이후" + str(self.buylast.rowCount()))# setHorizontalHeaderLabels 이후 -> n (여전히 n) 열이름 설정때문에 행(row_Count)이 변하는 게 아님.
+        # row_count 변수는 여전히 +1이 안된 값을 가짐. ->> row_count 변수의 값을 행추가 과정 (self.buylast.setRowCount(row_count+1))
+        # 이후에 다시 받아 사용하면 searchItem2 와 trdata_slot에서의 변수 사용방법을 같게 만들수도..
+        
+        self.buylast.setItem(row_count, 0, QTableWidgetItem(str(self.new_code))) # (row_count==행)실제 입력값은 1행부터이나 0부터 들어가야 된다.
+        self.buylast.setItem(row_count, 1, QTableWidgetItem(str(itemName))) 
+        # 위 내용의 부연: 테이블 위젯을 그릴 때에는 각 열의 이름인 column_head를 위해 하나더 그리지만 입력(배열처럼 생각)에서는 row_count 0이 첫째 로 입력 받는 공간임
+        
+        # 2,3이 없는 이유??
+        # row_count,[2:3]의 값은 trdata_slot에서 받은 값으로 입력해줌(row_count-1,[2:3])
         # 2->현재가 3->신용비율
+        self.buylast.setItem(row_count, 4, QTableWidgetItem(str(self.buy_price.value()))) #TextEdit변수명.toPainText() ->> DoubleSpinBox변수명.value()
+        self.buylast.setItem(row_count, 5, QTableWidgetItem(str(self.n_o_stock.value())))
+        self.buylast.setItem(row_count, 6, QTableWidgetItem(str(self.profit_price.value())))
+        self.buylast.setItem(row_count, 7, QTableWidgetItem(str(self.loss_price.value())))
+
+        
+        #self.searchItemTextEdit2.setAlignment(Qt.AlignRight) 
+        # 이 위치에 넣으면 버튼 눌러야 오른쪽으로 정렬됨. 처음부터 정렬하려면 위쪽에 정의 필요
         
         self.getItemInfo(self.new_code)
         
@@ -169,17 +204,24 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         self.k.kiwoom.dynamicCall("SetInputValue(QString, QString)", "종목코드", new_code)
         self.k.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", "주식기본정보요청", "opt10001", 0, "100")
 
+
+#######  buylast 화면에 뿌려주는 방식 1. searchItem2이후 trdata_slot 2. Load_code
+#######  두 방식에 모두 정렬 코드를 추가하면 정렬 가능할듯???????????
     def trdata_slot(self, sScrNo, sRQName, sTrCode, sRecordName, sPrevNext):
 
         if sTrCode == "opt10001":
-            if sRQName == "주식기본정보요청":
+            if sRQName == "주식기본정보요청": # 계좌 정보 불러오기 안하고 실행시 에러...->> 해결 필요.
                 currentPrice = abs(int(self.k.kiwoom.dynamicCall("GetCommData(QString, QString, int, QString)", sTrCode, sRQName, 0, "현재가")))
                 D_R = (self.k.kiwoom.dynamicCall("GetCommData(QString, QString, int, QString)", sTrCode, sRQName, 0, "신용비율")).strip()
                 row_count = self.buylast.rowCount()
                 self.buylast.setItem(row_count - 1, 2, QTableWidgetItem(str(currentPrice))) 
                 # 실제 buylast에서는 2행(rowcount) BUT!! setItem(입력)에서는 1행은 무시되고 그 다음 진짜 값이 있는 곳이 1행임.
+                # 위와 같은 현상이 발생하는 이유??
+                # ->> 위쪽의 searchItem2 함수에서 self.buylast.rowCount()를 호출할 때와 trdata_slot에서 호출할 때의 상황이 변함
+                #     위에서는 rowCount() 호출 이후에 setHorizontalHeaderLabels(column_head)를 설정해 행이 하나씩 밀림 and SO.. 이 이후에 같은 행을 받으려면 -1을 해야 같은 행임.
                 self.buylast.setItem(row_count - 1, 3, QTableWidgetItem(str(D_R)))
-
+                
+                print("trdata_slot에서 row_Count" + str(self.buylast.rowCount()))# 여기서는 2... n+1 이다. 이유: 
     def deltecode(self):
         x = self.buylast.selectedIndexes()
         self.buylast.removeRow(x[0].row())

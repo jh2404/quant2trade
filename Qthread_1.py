@@ -60,6 +60,10 @@ class Thread1(QThread):
             self.parent.stocklistTableWidget_2.setRowCount(rowCount)                    # 열 갯수 (종목 수)
             self.parent.stocklistTableWidget_2.setHorizontalHeaderLabels(column_head)   # 행의 이름 삽입
 
+            self.parent.stocklistTableWidget_2.resizeColumnsToContents()
+            self.parent.stocklistTableWidget_2.resizeRowsToContents()
+            # 행열 사이즈를 내용에 맞게 조절.
+
             self.rowCount = rowCount
 
             print("계좌에 들어있는 종목 수 %s" % rowCount)
@@ -74,11 +78,12 @@ class Thread1(QThread):
             #print(sRQName) ->>계좌평가잔고내역요청
             
             
-            self.parent.label_1.setText(str(totalBuyingPrice))
-            self.parent.label_2.setText(str(currentTotalPrice))
-            self.parent.label_3.setText(str(balanceAsset))
-            self.parent.label_4.setText(str(totalEstimateProfit))
-            self.parent.label_5.setText(str(total_profit_loss_rate))
+            self.parent.label_1.setText(str(format(totalBuyingPrice, ",")))
+            self.parent.label_2.setText(str(format(currentTotalPrice, ",")))
+            self.parent.label_3.setText(str(format(balanceAsset, ",")))
+            self.parent.label_4.setText(str(format(totalEstimateProfit, ",")))
+            self.parent.label_5.setText(str(format(total_profit_loss_rate, ",")))
+            # format(숫자가 있는 변수명, ",")) -> 1,000,000 천단위 콤마
             
             for index in range(rowCount):
                 itemCode = self.k.kiwoom.dynamicCall("GetCommData(QString, QString, int, QString)", sTrCode, sRQName, index, "종목번호").strip(" ").strip("A")
@@ -108,11 +113,20 @@ class Thread1(QThread):
 
                 self.parent.stocklistTableWidget_2.setItem(index, 0, QTableWidgetItem(str(itemCode)))
                 self.parent.stocklistTableWidget_2.setItem(index, 1, QTableWidgetItem(str(itemName)))
-                self.parent.stocklistTableWidget_2.setItem(index, 2, QTableWidgetItem(str(amount)))
-                self.parent.stocklistTableWidget_2.setItem(index, 3, QTableWidgetItem(str(buyingPrice)))
-                self.parent.stocklistTableWidget_2.setItem(index, 4, QTableWidgetItem(str(currentPrice)))
-                self.parent.stocklistTableWidget_2.setItem(index, 5, QTableWidgetItem(str(estimateProfit)))
-                self.parent.stocklistTableWidget_2.setItem(index, 6, QTableWidgetItem(str(profitRate)))
+                self.parent.stocklistTableWidget_2.setItem(index, 2, QTableWidgetItem(str(format(amount, ","))))
+                self.parent.stocklistTableWidget_2.setItem(index, 3, QTableWidgetItem(str(format(buyingPrice, ","))))
+                self.parent.stocklistTableWidget_2.setItem(index, 4, QTableWidgetItem(str(format(currentPrice, ","))))
+                self.parent.stocklistTableWidget_2.setItem(index, 5, QTableWidgetItem(str(format(estimateProfit, ","))))
+                self.parent.stocklistTableWidget_2.setItem(index, 6, QTableWidgetItem(str(format(profitRate, ","))))
+
+                self.parent.stocklistTableWidget_2.item(index, 0).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 1).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 2).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 3).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 4).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 5).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                self.parent.stocklistTableWidget_2.item(index, 6).setTextAlignment(Qt.AlignVCenter | Qt.AlignRight)
+                # 우측 정렬&수직 가운데 정렬
 
                 #print(self.k.acc_portfolio[itemCode]) ->>{'종목명': '대한항공', '보유수량': 100, '매입가': 22100, '수익률(%)': -1.12, '현재가': 22050, '매입금액': 2210000, '매매가능수량': 100}
                 #리스트 안의 리스트

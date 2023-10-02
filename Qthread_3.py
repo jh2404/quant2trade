@@ -209,7 +209,7 @@ class Thread3(QThread):
 
             # 포트폴리오 종목코드마다 아래 실시간 데이터를 입력
             self.k.portfolio_stock_dict[sCode].update({"채결시간": a})       # 아래 내용을 업데이트
-            self.k.portfolio_stock_dict[sCode].update({"s현재가": b})
+            self.k.portfolio_stock_dict[sCode].update({"현재가": b})
             self.k.portfolio_stock_dict[sCode].update({"전일대비": c})
             self.k.portfolio_stock_dict[sCode].update({"등락율": d})
             self.k.portfolio_stock_dict[sCode].update({"(최우선)매도호가": e})
