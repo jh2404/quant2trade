@@ -32,7 +32,7 @@
     <property name="font">
      <font>
       <family>Sans Serif Collection</family>
-      <pointsize>9</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
    </widget>
@@ -48,33 +48,11 @@
     <property name="font">
      <font>
       <family>Sans Serif Collection</family>
-      <pointsize>9</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
      <string>계좌평가잔고내역 확인</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="stocklistTableWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>641</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777211</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Sans Serif Collection</family>
-      <pointsize>8</pointsize>
-     </font>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
@@ -89,7 +67,7 @@
     <property name="font">
      <font>
       <family>Sans Serif Collection</family>
-      <pointsize>8</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -98,7 +76,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -111,7 +89,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -124,7 +102,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -137,7 +115,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -150,7 +128,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -163,7 +141,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -176,7 +154,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -189,7 +167,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -202,7 +180,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -215,7 +193,7 @@
        <property name="font">
         <font>
          <family>Sans Serif Collection</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -236,7 +214,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>9</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
@@ -246,55 +224,17 @@
    <widget class="QTableWidget" name="Danger_wd">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>680</x>
       <y>130</y>
-      <width>441</width>
+      <width>491</width>
       <height>221</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>420</y>
-      <width>561</width>
-      <height>221</height>
-     </rect>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>자동매매 종목 선정</string>
-     </attribute>
-     <widget class="QTableWidget" name="buylast">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>561</width>
-        <height>201</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>자동매매 조건</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>521</width>
-        <height>171</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QTextEdit" name="searchItemTextEdit2">
     <property name="geometry">
@@ -304,6 +244,11 @@
       <width>261</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -317,7 +262,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
@@ -333,6 +278,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>종목 추가</string>
     </property>
@@ -345,6 +295,11 @@
       <width>111</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>종목 삭제</string>
@@ -359,6 +314,11 @@
       <height>28</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>불러오기</string>
     </property>
@@ -371,6 +331,11 @@
       <width>81</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>삭제</string>
@@ -385,6 +350,11 @@
       <height>28</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>종목 저장</string>
     </property>
@@ -397,6 +367,11 @@
       <width>68</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>매수 가격</string>
@@ -411,6 +386,11 @@
       <height>15</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>익절 가격</string>
     </property>
@@ -423,6 +403,11 @@
       <width>68</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>손절 가격</string>
@@ -437,6 +422,11 @@
       <height>15</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>매수 수량</string>
     </property>
@@ -450,6 +440,11 @@
       <height>161</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>자동매매 시작</string>
     </property>
@@ -461,6 +456,11 @@
        <width>121</width>
        <height>28</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>자동매매 시작</string>
@@ -475,6 +475,11 @@
       <width>121</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="showGroupSeparator" stdset="0">
      <bool>true</bool>
@@ -492,6 +497,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="showGroupSeparator" stdset="0">
      <bool>true</bool>
     </property>
@@ -507,6 +517,11 @@
       <width>121</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="showGroupSeparator" stdset="0">
      <bool>true</bool>
@@ -524,12 +539,115 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="showGroupSeparator" stdset="0">
      <bool>true</bool>
     </property>
     <property name="maximum">
      <double>10000000.000000000000000</double>
     </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>651</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>계좌 내역</string>
+     </attribute>
+     <widget class="QTableWidget" name="stocklistTableWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>641</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777211</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sans Serif Collection</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>미체결 잔고</string>
+     </attribute>
+     <widget class="QTableWidget" name="not_account">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>641</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>440</y>
+      <width>561</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>자동매매 종목 선정</string>
+    </property>
+    <widget class="QTableWidget" name="buylast">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>541</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -538,7 +656,7 @@
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>29</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

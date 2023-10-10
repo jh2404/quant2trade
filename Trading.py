@@ -35,7 +35,9 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
     def __init__(self, *args, **kwargs):                      # Main class의 self를 초기화 한다.
 
         print("Login Machine 실행합니다.")
+        
         super(Login_Machnine, self).__init__(*args, **kwargs)
+        
         form_class.__init__(self)                            # 상속 받은 from_class를 실행하기 위한 초기값(초기화)
         self.setUI()                                         # UI 초기값 셋업 반드시 필요
 
@@ -188,10 +190,18 @@ class Login_Machnine(QMainWindow, QWidget, form_class):       # QMainWindow : Py
         # 2,3이 없는 이유??
         # row_count,[2:3]의 값은 trdata_slot에서 받은 값으로 입력해줌(row_count-1,[2:3])
         # 2->현재가 3->신용비율
-        self.buylast.setItem(row_count, 4, QTableWidgetItem(str(self.buy_price.value()))) #TextEdit변수명.toPainText() ->> DoubleSpinBox변수명.value()
-        self.buylast.setItem(row_count, 5, QTableWidgetItem(str(self.n_o_stock.value())))
-        self.buylast.setItem(row_count, 6, QTableWidgetItem(str(self.profit_price.value())))
-        self.buylast.setItem(row_count, 7, QTableWidgetItem(str(self.loss_price.value())))
+        self.buylast.setItem(row_count, 4, QTableWidgetItem(str(int(self.buy_price.value())))) #TextEdit변수명.toPainText() ->> DoubleSpinBox변수명.value()
+        ##### 에러발생 -> 해결
+        # self.k.portfolio_stock_dict[t_code].update({"매수가": int(mesu)}) ->> int()로 형변환 해줘야 함.
+        # ValueError: invalid literal for int() with base 10: '132000.0' 에러발생.
+        # 1. 쓰레드 3에서 -> int(float(mesu)) 이런식으로 float을 받아 int로 형변환 하거나
+        # 2. Trading.py 코드의 buylast.setItem부분 수정을 통해 mesu 자체를 int로 저장하도록 만들어야함
+        # 기존 저장된 형태 005930	삼성전자	66000	+0.09	66000.0	15.0	67000.0	65500.0
+        
+        
+        self.buylast.setItem(row_count, 5, QTableWidgetItem(str(int(self.n_o_stock.value()))))
+        self.buylast.setItem(row_count, 6, QTableWidgetItem(str(int(self.profit_price.value()))))
+        self.buylast.setItem(row_count, 7, QTableWidgetItem(str(int(self.loss_price.value()))))
 
         
         #self.searchItemTextEdit2.setAlignment(Qt.AlignRight) 

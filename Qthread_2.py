@@ -61,8 +61,10 @@ class Thread2(QThread):
             print("%s / %s : 종목 검사 중 코드이름 : %s." % (idx + 1, len(code_list), self.code_in_all))
 
             date_today = datetime.today().strftime("%Y%m%d")
-            date_prev = datetime.today() - timedelta(10)  # 넉넉히 10일전의 데이터를 받아온다. 또는 20일이상 데이터도 필요
+            date_prev = datetime.today() - timedelta(20)  # 넉넉히 10일전의 데이터를 받아온다. 또는 20일이상 데이터도 필요 ->20으로 변경함.
             date_prev = date_prev.strftime("%Y%m%d")
+            
+            print("date_prev: "+str(date_prev)+"date_today: "+str(date_today))
 
             self.k.kiwoom.dynamicCall("SetInputValue(QString, QString)", "종목코드", code)
             self.k.kiwoom.dynamicCall("SetInputValue(QString, QString)", "시작일자", date_prev)
@@ -74,14 +76,15 @@ class Thread2(QThread):
             
             
             
-
-            
     def trdata_slot(self, sScrNo, sRQName, sTrCode, sRecordName, sPrevNext): # API를 통한 기관매매추이 <요청>의 결과 값 <수신>
 
         if sRQName == "종목별기관매매추이요청2": #수신할 데이터 확인sRQName
 
             cnt2 = self.k.kiwoom.dynamicCall("GetRepeatCnt(QString, QString)", sTrCode, sRQName)  #GetRepeatCnt로 결과값의 개수 확인
             # 10일치 이상을 하려면 이부분에 10일치 이상데이터 필요
+            
+            # print("cnt2: "+str(cnt2)) ->> cnt2가 3으로 아래 위험도 비교 시(4개 기준으로 작성된 코드)에 에러발생.
+            # 최근 10일 중 영업일이 4일이 안 돼서 발생..
 
             self.calcul2_data = []
             self.calcul2_data2 = []
